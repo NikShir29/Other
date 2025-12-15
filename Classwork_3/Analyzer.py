@@ -35,6 +35,25 @@ if choice in ['text_1.txt', 'text_2.txt']:
             print(f"Непустых строк: {non_empty_lines}")
             print(f"Количество слов: {word_count}")
             print(f"Количество символов: {char_count}")
-    
+
+            choice_save = input("Сохранить анализ в новый файл? Y/N: ")
+            if choice_save in ['Y', 'y']:
+                with open("report.txt", 'w', encoding='utf-8') as report_file:
+                    report_file.write(f"""
+    Файл: {choice}
+    Общее количество строк: {total_lines}
+    Пустых строк: {empty_lines}
+    Непустых строк: {non_empty_lines}
+    Количество слов: {word_count}
+    Количество символов: {char_count}""")
+                print("Работа успешно завершена.")
+            elif choice_save in ['N', 'n']:
+                print("Работа успешно завершена.")
+    except PermissionError:
+        print(f"Ошибка: Нет прав на запись в файл {filename}")
+    except IOError as e:
+        print(f"Ошибка ввода-вывода при создании файла {filename}: {e}")
+    except Exception as e:
+        print(f"Неизвестная ошибка при создании файла {filename}: {e}")
 else:
-    print("Файл не найден")
+    print("Файл не найден.")
