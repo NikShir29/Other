@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виртуальный питомец - Ёжик Борис</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+        h1 {
+            color: #2e8b57;
+        }
+        .pet-img {
+            width: 300px;
+            border-radius: 15px;
+            border: 5px solid #8b4513;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin: 20px 0;
+        }
+        button {
+            font-size: 18px;
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        #feed-btn {
+            background-color: #ffb347;
+        }
+        #play-btn {
+            background-color: #7ec0ee;
+        }
+        #sleep-btn {
+            background-color: #9370db;
+        }
+        .status {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 8px;
+            border-bottom: 1px dashed #ccc;
+        }
+        .emoji {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Виртуальный ёжик Борис</h1>
+    
+    <img src="yozh.jpg" alt="Ёжик Борис" class="pet-img">
+    
+    <div class="buttons">
+        <button id="feed-btn">🍎 Покормить</button>
+        <button id="play-btn">⚽ Поиграть</button>
+        <button id="sleep-btn">💤 Уложить спать</button>
+    </div>
+    
+    <div class="status">
+        <h2>Состояние Бориса:</h2>
+        <ul>
+            <li><span class="emoji">😊</span> Настроение: <span id="mood">Хорошее</span></li>
+            <li><span class="emoji">🍎</span> Сытость: <span id="hunger">80%</span></li>
+            <li><span class="emoji">⚡</span> Энергия: <span id="energy">60%</span></li>
+            <li><span class="emoji">🎮</span> Веселье: <span id="fun">50%</span></li>
+        </ul>
+    </div>
+    
+    <div style="margin-top: 30px; color: #666; font-style: italic;">
+        <p>Ухаживайте за Борисом! Если показатели упадут ниже 20%, он будет грустить</p>
+        <p>Нажимайте кнопки, чтобы изменить значения</p>
+        <p>(Значения пока что не меняются)</p>
+    </div>
+
+    <script>
+        const moodElement = document.getElementById('mood');
+        const hungerElement = document.getElementById('hunger');
+        const energyElement = document.getElementById('energy');
+        const funElement = document.getElementById('fun');
+        
+        const feedButton = document.getElementById('feed-btn');
+        const playButton = document.getElementById('play-btn');
+        const sleepButton = document.getElementById('sleep-btn');
+        
+        function updateStatus() {
+            console.log("Статус обновлён!");
+        }
+        
+        feedButton.addEventListener('click', function() {
+            alert("Вы покормили Бориса яблоком! 🍎");
+        });
+        
+        playButton.addEventListener('click', function() {
+            alert("Борис весело играет с мячиком! ⚽");
+        });
+        
+        sleepButton.addEventListener('click', function() {
+            alert("Борис сладко спит... 💤");
+        });
+        
+        window.addEventListener('load', function() {
+            const img = document.querySelector('.pet-img');
+            img.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                img.style.transform = 'scale(1)';
+                img.style.transition = 'transform 0.5s';
+            }, 100);
+        });
+    </script>
